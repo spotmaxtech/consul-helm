@@ -46,6 +46,7 @@ spec:
             - |
               consul-k8s server-acl-init \
                 -release-name={{ .Release.Name }} \
+                -resource-prefix={{ template "consul.fullname" . }} \
                 -k8s-namespace={{ .Release.Namespace }} \
                 {{- if .Values.syncCatalog.enabled }}
                 -create-sync-token=true \
