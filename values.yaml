@@ -5,7 +5,7 @@ global:
   # will enable or disable all the components within this chart by default.
   # Each component can be overridden using the component-specific "enabled"
   # value.
-  enabled: true
+  enabled: false
 
   # Domain to register the Consul DNS server to listen for.
   domain: consul
@@ -31,7 +31,10 @@ global:
   # as. This shouldn't be changed once the Consul cluster is up and running
   # since Consul doesn't support an automatic way to change this value
   # currently: https://github.com/hashicorp/consul/issues/1858
-  datacenter: dc1
+  #datacenter: dc1
+  #datacenter: mv-sg-consulali
+  #datacenter: mv-fk-aliconsul
+  datacenter: mv-se-consul
 
   # enablePodSecurityPolicies is a boolean flag that controls whether pod
   # security policies are created for the consul components created by this
@@ -163,9 +166,12 @@ server:
 # within the Kube cluster. The current deployment model follows a traditional
 # DC where a single agent is deployed per node.
 client:
-  enabled: "-"
+  enabled: true
   image: null
-  join: null
+  join:
+    #- fk-consul-ali.rayjump.com
+    #- sg-consul-ali.rayjump.com
+    - 172.31.4.74
 
   # dataDirectoryHostPath is an absolute path to a directory on the host machine
   # to use as the Consul client data directory.
