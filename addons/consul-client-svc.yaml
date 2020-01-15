@@ -6,6 +6,7 @@ metadata:
   name: consul-client
   namespace: consul-client
 spec:
+  # ClusterIP: None # headless模式
   ports:
     - name: consul-client
       port: 8500
