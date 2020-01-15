@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.spotmax/name: consul-client
+  name: consul-client
+  namespace: consul-client
+spec:
+  ports:
+    - name: consul-client
+      port: 8500
+      protocol: TCP
+      targetPort: 8500
+  selector:
+    app: consul
+  type: ClusterIP
